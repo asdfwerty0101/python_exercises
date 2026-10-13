@@ -18,4 +18,10 @@ elif number == 0:
 else:
     print(f"Число {number} положительное")
 
+if number == 40:
+    print(f"Вы ввели число 40!")
+else:
+    # TODO сделать позднее в понедельник
+    pass
+
 

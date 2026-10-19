@@ -264,3 +264,29 @@ print(students)
     "c": 3,
 }
 
+mywallet = {
+    "500 KzT": 2,
+    "1000 KZT": 4,
+    "10000 KZT": 5,
+    "100 USD": 5,
+    "50 USD": 2,
+    "50 EURo": 4,
+    "100 euro": 10,
+    "10 юань": 10,
+}
+
+sum_in_wallet = 0
+
+# for banknote in mywallet:
+for banknote in mywallet.keys():
+    if "KZT" in banknote.upper():
+        banknote_name_parts = banknote.split()  # ['1000', 'KZT']
+        try:
+            banknote_nominal_amount = int(banknote_name_parts[0])
+        except ValueError:
+            banknote_nominal_amount = 0
+        print(banknote_nominal_amount)
+        sum_in_wallet += banknote_nominal_amount * mywallet[banknote]
+print(f"Amount of KZT in my wallet is {sum_in_wallet} KZT")
+print(mywallet.keys())
+print(mywallet.values())

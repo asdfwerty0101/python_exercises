@@ -121,3 +121,29 @@ mywallet1 = {
 print(count_my_money(mywallet))
 print(count_my_money(dict()))
 print(count_my_money(mywallet1))
+
+
+x = 10
+
+def myfunction1():
+    x = 34
+    print('in funciton', x)
+    # print('in funciton ' + str(x))
+    # print(f'in funciton {x}')
+
+myfunction1()
+print(x)
+
+def outer():
+    z = 20
+    def inner(a):
+        zz = 10
+        return a * 2 * z * zz
+
+    x = 12
+    a = x * 10
+    b = inner(a)
+    return b
+
+myresult = outer()
+print(myresult)

@@ -38,7 +38,11 @@ while True:
         contacts_dict[new_name] = new_phone_number
     elif choice_num == 2:
         # 2 - найти
-        pass
+        name_to_search = input("Введите имя контакта, который ищете:")
+        if name_to_search not in contacts_dict:
+            print("не найден")
+            continue
+        print(contacts_dict[name_to_search] )
     elif choice_num == 3:
         # 3 - удалить
         pass

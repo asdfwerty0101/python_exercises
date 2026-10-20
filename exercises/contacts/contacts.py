@@ -45,10 +45,14 @@ while True:
         print(contacts_dict[name_to_search] )
     elif choice_num == 3:
         # 3 - удалить
-        pass
+        name_to_delete = input("Введите имя контакта, который удаляете:")
+        deleted_name = contacts_dict.pop(name_to_delete, None)
+        if deleted_name is None:
+            print("Имя не найдено")
     elif choice_num == 4:
         # 4 - показать все
-        pass
+        for name, phone_number in contacts_dict.items():
+            print(f"{name}: {phone_number}")
     elif choice_num == 5:
         # 5 - сохранить и выйти
         contacts_file = open("contacts.txt", "w")

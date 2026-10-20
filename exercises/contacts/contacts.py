@@ -30,7 +30,12 @@ while True:
         continue
     if choice_num == 1:
         # 1 - добавить
-        pass
+        new_name = input("Введите имя нового контакта:")
+        new_phone_number = input("Введите номер нового контакта:")
+        if new_name in contacts_dict:
+            print("Уже есть такой контакт. Сначала удалите старый контакт")
+            continue
+        contacts_dict[new_name] = new_phone_number
     elif choice_num == 2:
         # 2 - найти
         pass

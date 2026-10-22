@@ -6,7 +6,7 @@ from datetime import time
 
 from lib1 import say_hello1 as sh1, say_hello2
 from lib2 import say1, say2
-
+import lib1
 MY_CONSTANT = "my constant name"
 
 

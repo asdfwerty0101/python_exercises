@@ -1,0 +1,104 @@
+1. Проверка пароля
+(def, str methods, return tuple)
+
+Напиши check_password(pwd) — возвращает кортеж (bool, str):
+(True, "ОК") — если длина >= 8, есть цифра и заглавная буква
+(False, причина) — если нет
+
+Причины:
+"Слишком короткий" (длина < 8)
+"Нет цифры"
+"Нет заглавной буквы"
+
+ok, msg = check_password("Hello123")
+print(ok, msg)    # True ОК
+
+ok, msg = check_password("hello")
+print(ok, msg)    # False Слишком короткий
+
+Тренирует: def + str methods (isdigit, isupper) + for + return tuple.
+
+===========================================================
+2. Менеджер задач (To-Do) с функциями
+(def, list, file, while, try/except)
+
+Разбей программу на функции:
+load_tasks(filename) — читает файл tasks.txt построчно, возвращает list строк
+save_tasks(tasks, filename) — записывает список в файл (каждая задача с новой строки)
+add_task(tasks, text) — добавляет в список
+remove_task(tasks, index) — удаляет по индексу через pop, обрабатывает IndexError
+show_tasks(tasks) — выводит через enumerate с номерами
+
+Главный цикл меню:
+
+1 - добавить
+2 - удалить
+3 - показать
+4 - выход
+
+При старте — load_tasks. При выходе — save_tasks.
+
+Ожидаемый формат tasks.txt:
+
+Купить авиабилеты
+Позвонить брату
+Сделать домашку
+
+Тренирует: def + файлы + list + while + try/except + enumerate.
+
+===========================================================
+3. Голосование с функциями
+(def, dict, set, list, файл)
+
+votes = ["Аня", "Борис", "Аня", "Вера", "Аня", "Борис", "Глеб", "Аня", "Вера"]
+Функции:
+
+count_votes(votes) — dict {кандидат: голоса}
+winner(votes_dict) — имя с максимальным числом голосов
+candidates(votes_dict) — множество кандидатов
+print_results(votes_dict, win) — красивый вывод
+save_results(votes_dict, filename) — запись в results.txt в формате Имя: N
+
+Собери всё в main().
+
+Ожидаемый results.txt:
+
+Аня: 4
+Вера: 2
+Борис: 2
+Глеб: 1
+
+Тренирует: def + dict + set + файлы + сортировка.
+
+===========================================================
+4. Мини-банк на функциях
+(def, dict, try/except/else/finally, файл, while)
+
+Храни счёт как dict: {"balance": 1000, "history": []}.
+
+Функции:
+load_account(filename) — читает account.txt
+(одна строка balance) и историю history.txt
+save_account(account, filename) — сохраняет
+deposit(account, amount) — проверяет,
+что amount > 0 (иначе raise ValueError),
+ прибавляет, пишет в историю "+500"
+withdraw(account, amount) — проверяет, хватает
+ли средств, вычитает, пишет "-300"
+show_history(account) — выводит все операции
+через enumerate
+main() — меню в while True
+
+В main используй полный try/except/else/finally:
+
+try:
+    amount = float(input("Сумма: "))
+    deposit(account, amount)
+except ValueError as e:
+    print("Ошибка:", e)
+else:
+    print("Успешно. Баланс:", account["balance"])
+finally:
+    print("--- операция обработана ---")
+
+Тренирует: def + dict + list + файлы + try/except/else/finally + while + raise.

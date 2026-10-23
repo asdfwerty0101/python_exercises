@@ -23,13 +23,22 @@ def save_account(account, filename):
 # что amount > 0 (иначе raise ValueError),
 #  прибавляет, пишет в историю "+500"
 def deposit(account, amount):
+    if amount <= 0:
+        raise ValueError("amount is less than 0")
     account["balance"] += amount
     account["history"].append(f"+{amount}")
 
 #  — проверяет, хватает
 # ли средств, вычитает, пишет "-300"
 def withdraw(account, amount):
-    pass
+    if amount <= 0:
+        raise ValueError("amount is less than 0")
+
+    if account["balance"] < amount:
+        raise ValueError(f"Not sufficient balance. Balance is less than "
+                         f"{amount}")
+    account["balance"] -= amount
+    account["history"].append(f"-{amount}")
 
 #  — выводит все операции
 # через enumerate
@@ -53,20 +62,20 @@ def main():
             show_menu()
             user_choice = input("Your choice (1-4):")
             user_choice = user_choice.strip()
-            if user_choice == "1":
-                # deposit
+            if user_choice in ["1", "2"]:
+                # deposit or withdraw
                 try:
                     amount = float(input("Amount: "))
-                    deposit(account, amount)
+                    if user_choice == "1":
+                        deposit(account, amount)
+                    else:
+                        withdraw(account, amount)
                 except ValueError as e:
                     print("Error:", e)
                 else:
                     print("Success. Balance:", account["balance"])
                 finally:
                     print("--- operation completed ---")
-            elif user_choice == "2":
-                # withdraw
-                pass
             elif user_choice == "3":
                 # show history
                 pass

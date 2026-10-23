@@ -25,8 +25,8 @@ def save_account(account, filename):
 def deposit(account, amount):
     if amount <= 0:
         raise ValueError("amount is less than 0")
-    account["balance"] += amount
-    account["history"].append(f"+{amount}")
+    account["balance"] += round(amount)
+    account["history"].append(f"+{round(amount)}")
 
 #  — проверяет, хватает
 # ли средств, вычитает, пишет "-300"
@@ -37,13 +37,15 @@ def withdraw(account, amount):
     if account["balance"] < amount:
         raise ValueError(f"Not sufficient balance. Balance is less than "
                          f"{amount}")
-    account["balance"] -= amount
-    account["history"].append(f"-{amount}")
+    account["balance"] -= round(amount)
+    account["history"].append(f"-{round(amount)}")
 
 #  — выводит все операции
 # через enumerate
 def show_history(account):
-    pass
+    print("Operations history:")
+    for index, operation in enumerate(account["history"], 1):
+        print(f"{index}. {operation}")
 
 def show_menu():
     print("Choose operation:")
@@ -78,7 +80,7 @@ def main():
                     print("--- operation completed ---")
             elif user_choice == "3":
                 # show history
-                pass
+                show_history(account)
             elif user_choice == "4":
                 # quit
                 print("minibank finished!")

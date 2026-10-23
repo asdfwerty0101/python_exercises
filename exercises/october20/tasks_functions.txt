@@ -78,7 +78,7 @@ save_results(votes_dict, filename) — запись в results.txt в форма
 
 Функции:
 load_account(filename) — читает account.txt
-(одна строка balance) и историю history.txt
+(одна строка balance) и историю history
 save_account(account, filename) — сохраняет
 deposit(account, amount) — проверяет,
 что amount > 0 (иначе raise ValueError),
